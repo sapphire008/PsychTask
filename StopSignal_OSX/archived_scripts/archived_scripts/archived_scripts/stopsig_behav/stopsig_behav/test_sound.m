@@ -1,0 +1,1 @@
+% Program to test the volume of the beep for stop signalSnd('Open');samp = 22254.545454;aud_stim = sin(1:0.25:1000);Snd('Play',aud_stim,samp);

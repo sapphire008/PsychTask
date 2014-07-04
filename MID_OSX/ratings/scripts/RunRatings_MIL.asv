@@ -1,0 +1,286 @@
+function ratings = RunRatings()
+
+    path.main = pwd;
+    path.scripts = fullfile(path.main,'scripts');
+    path.data = fullfile(path.main,'data');
+    
+    if max(Screen('Screens'))>0 %dual screen
+        dual=get(0,'MonitorPositions');
+        resolution = [0,0,dual(2,3),dual(2,4)];
+    elseif max(Screen('Screens'))==0 % one screen
+        resolution = get(0,'ScreenSize') ;
+    end
+    scrX = resolution(3);
+    scrY = resolution(4);
+
+    subjectID = input('Please enter the subject ID number (same as before): ','s');
+
+    bkg_color = 0;
+    font = 'Helvetica';
+    
+    textsize_ref = 40;
+
+    screenNumber = max(Screen('Screens'));
+    [Window,Rect] = Screen('OpenWindow',screenNumber,0);
+    
+    Screen('FillRect',Window,bkg_color); 
+    Screen('Flip',Window);
+    Screen('TextSize',Window,textsize_ref);
+    Screen('TextFont',Window,font);
+    
+    cd(path.scripts)
+    
+    c.textColor = 255;
+
+
+    %slider bar stuff
+    c.linestart=scrX/8;
+    c.lineend=scrX*7/8;
+    c.linelength=(c.lineend-c.linestart);
+
+    % circle rater stuff
+    c.numEls = 7; % number of elements on the scale... e.g. for a 1-7 scale, enter 7
+    c.radius = scrY/20;
+    c.height = 3*scrY/6;
+    c.circleSep = (c.linelength)/(c.numEls-1);
+
+    greenColors =[[250 255 250];[200 255 200];[150 255 150];[100 255 100];[50 255 50];[25 255 25];[0 200 0]];
+    greenColors = greenColors';
+    
+    twoColors =[[0 0 255];[50 50 255];[100 100 255];[245 245 220];[245 165 79];[255 150 50];[255 100 50]];
+    twoColors = twoColors';
+    
+    % text heights
+    c.qnHeight = 2*scrY/6;
+    c.scaleHeight = 4*scrY/6;
+    c.instrHeight = 5*scrY/6;
+
+    % circle slider
+    c.slideRadius = 2*c.radius/3;
+
+    % rating text
+
+    ascaleArr={'  Very Low','          Moderate','       Very High'};
+    aratingArr = 'AROUSAL';
+    
+    vscaleArr = {'Very Negative','           Neutral','    Very Positive'};
+    vratingArr = 'VALENCE';
+    
+    cirobjW = PassiveCreateCircleObject(scrX,scrY,1,{'$0.00'},1,0);
+    cirobjH = PassiveCreateCircleObject(scrX,scrY,1,{'+$3.05','-$3.05'},1,180);
+    cirobjP = PassiveCreateCircleObject(scrX,scrY,1,{'+$5.25','-$1.75'},1,90);
+    cirobjN = PassiveCreateCircleObject(scrX,scrY,1,{'-$5.25','+$1.75'},1,90);
+
+    circles = {cirobjW,cirobjH,cirobjP,cirobjN};
+    aratings = [];
+    vratings = [];
+    dummy = [];
+    k=0;
+    
+    % instructions:
+    
+    fontsize = 30;
+    charwrap = 80;
+
+    inst1 = ['You will now see the pictures of the past task again.\n\n' ...
+        'You will see the picture, followed by a rating scale.\n\n' ...
+        'The headline of the rating scale will indicate which rating you are being asked to make.  Please pay attention as to which of the following 2 ratings you will be asked to make:\n\n' ...
+        'The AROUSAL scale\n' ...
+        'The VALENCE scale\n'];
+    
+    Screen('TextSize',Window,fontsize);
+    DrawFormattedText(Window,inst1,'center','center',225,charwrap);
+    Screen('Flip',Window);
+    WaitSecs(0.2);
+    GetKey('space')
+
+    inst2 = ['THE AROUSAL SCALE measures how aroused you are feeling at a given time.\n\n' ...
+        'At the far right on this scale, you would be feeling very alert, aroused, activated, charged or energized, very physically or mentally aroused.\n\n' ...
+        'At the far left, you would be feeling completely unaroused, slow, still, de-energized, no physical or mental arousal at all.\n\n' ...
+        'Notice that this AROUSAL scale is a continuum going from low to high arousal.  The point in the middle of the scale would represent being moderately aroused; a point in between the two extremes.  It does not mean neutral.\n\n'...
+        'Use the right arrow key to move the indicator on the scale towards higher arousal.\n\n' ...
+        'Press ''space'' to continue.'];
+    
+    Screen('TextSize',Window,fontsize);
+    DrawFormattedText(Window,inst2,'center','center',225,charwrap);
+    Screen('Flip',Window);
+    WaitSecs(0.2);
+    GetKey('space')
+
+    c.slidepos = 1;
+    c.colors = greenColors;
+
+    circleRater(c,k,aratingArr,ascaleArr,Window);
+    WaitSecs(0.05);
+
+    KbName('UnifyKeyNames');
+    while true
+        key = GetKey({'RightArrow' 'LeftArrow' 'space'});
+
+        if strcmp(key, 'RightArrow') && c.slidepos < c.numEls
+            c.slidepos = c.slidepos + 1;
+            circleRater(c,k,aratingArr,ascaleArr,Window);
+        elseif strcmp(key, 'LeftArrow') && c.slidepos > 1
+            c.slidepos = c.slidepos - 1;
+            circleRater(c,k,aratingArr,ascaleArr,Window);
+        elseif strcmp(key, 'space')
+            dummy=c.slidepos;
+            break;
+        end
+
+    end
+
+    inst3 = ['THE VALENCE SCALE measures how positive or negative you are feeling. \n\n' ...
+        'At the far left you would be feeling very negative, that could be unhappy, upset, irritated, frustrated, angry, sad, depressed, or some other negative feeling. \n\n ' ...
+        'At the far right you would be feeling very positive: That could be happy, pleased, satisfied, competent, proud, content, delighted, or some other positive feeling. \n\n' ...
+        'In the middle of this scale you would be feeling completely neutral, neither positive or negative.  From the neutral midpoint, the ratings get gradually more negative as you move left, and gradually more positive as you move right.\n\n' ...
+        'Use the left arrow key to move the indicator on the scale towards negative and the right arrow key to move the indicator towards positive.'];
+
+    Screen('TextSize',Window,fontsize);
+    DrawFormattedText(Window,inst3,'center','center',225,charwrap);
+    Screen('Flip',Window);
+    WaitSecs(0.2);
+    GetKey('space')
+    
+    %(VALENCE RATE DEMO SCREEN)
+    c.slidepos = round(c.numEls/2);
+    c.colors = twoColors;
+
+    circleRater(c,k,vratingArr,vscaleArr,Window);
+    WaitSecs(0.05);
+
+    KbName('UnifyKeyNames');
+    while true
+        key = GetKey({'RightArrow' 'LeftArrow' 'space'});
+
+        if strcmp(key, 'RightArrow') && c.slidepos < c.numEls
+            c.slidepos = c.slidepos + 1;
+            circleRater(c,k,vratingArr,vscaleArr,Window);
+        elseif strcmp(key, 'LeftArrow') && c.slidepos > 1
+            c.slidepos = c.slidepos - 1;
+            circleRater(c,k,vratingArr,vscaleArr,Window);
+        elseif strcmp(key, 'space')
+            dummy=c.slidepos;
+            break;
+        end
+    end
+
+    inst4 = ['Think about the scales as capturing separate aspects of your how you are feeling.\n\n' ...
+        'So, the arousal scale doesn''t tell us whether you are feeling good or bad; it''s capturing more this idea of physical or mental activation.  So, for example you could be feeling very aroused and positive (suppose you were really excited because you had just won a prize) or very aroused and negative (suppose you were really angry because someone had just stolen your parking space).\n\n' ...
+        'On the other hand, you could be feeling really unaroused and positive (if you were relaxing and looking at a beautiful sunset) or really unaroused and negative (if you were feeling down and depressed).\n\n' ...
+        'We want you to report the negative or positive dimension of your feeling on the one scale, and the arousal aspect on the other.'];
+
+    Screen('TextSize',Window,fontsize);
+    DrawFormattedText(Window,inst4,'center','center',225,charwrap);
+    Screen('Flip',Window);
+    WaitSecs(0.2);
+    GetKey('space')
+    
+    inst5 = ['Please make each rating individually for that particular picture.\n\n' ...
+        'Indicate how the picture makes you feel. Please, make your ratings as quickly and accurately as possible. \n\n' ...
+        'Press ''space'' after a rating when you are ready to advance to the next trial.'];
+    
+    Screen('TextSize',Window,fontsize);
+    DrawFormattedText(Window,inst5,'center','center',225,charwrap);
+    Screen('Flip',Window);
+    WaitSecs(0.2);
+    GetKey('space')
+    
+    
+    DisplayITI(Window);
+    
+    
+    for i = 1:length(circles)
+        PassiveCircleAnimation(Window,scrX,scrY,circles{i});
+        
+        k = 4;
+        
+        c.slidepos = 1;
+        c.colors = greenColors;
+        
+        circleRater(c,k,aratingArr,ascaleArr,Window);
+        WaitSecs(0.05);
+
+        KbName('UnifyKeyNames');
+        while true
+            key = GetKey({'RightArrow' 'LeftArrow' 'space'});
+
+            if strcmp(key, 'RightArrow') && c.slidepos < c.numEls
+                c.slidepos = c.slidepos + 1;
+                circleRater(c,k,aratingArr,ascaleArr,Window);
+            elseif strcmp(key, 'LeftArrow') && c.slidepos > 1
+                c.slidepos = c.slidepos - 1;
+                circleRater(c,k,aratingArr,ascaleArr,Window);
+            elseif strcmp(key, 'space')
+                aratings(i)=c.slidepos;
+                break;
+            end
+
+        end
+        
+        c.slidepos = round(c.numEls/2);
+        c.colors = twoColors;
+        
+        circleRater(c,k,vratingArr,vscaleArr,Window);
+        WaitSecs(0.05);
+
+        KbName('UnifyKeyNames');
+        while true
+            key = GetKey({'RightArrow' 'LeftArrow' 'space'});
+
+            if strcmp(key, 'RightArrow') && c.slidepos < c.numEls
+                c.slidepos = c.slidepos + 1;
+                circleRater(c,k,vratingArr,vscaleArr,Window);
+            elseif strcmp(key, 'LeftArrow') && c.slidepos > 1
+                c.slidepos = c.slidepos - 1;
+                circleRater(c,k,vratingArr,vscaleArr,Window);
+            elseif strcmp(key, 'space')
+                vratings(i)=c.slidepos;
+                break;
+            end
+
+        end
+        
+        DisplayITI(Window);
+
+    end
+    
+    ParseData(path,subjectID,aratings,vratings,{'zero','half','positive','negative'});
+    
+    sca;
+    
+end
+
+function circleRater(c,k,ratingArr,scaleArr,Window)
+    Screen('TextSize',Window,34);
+    DrawFormattedText(Window, ratingArr,'center',c.qnHeight,c.textColor);
+
+    rects=[];
+
+    %determine position of circles
+    for x=1:c.numEls
+        centerX = c.linestart+c.circleSep*(x-1);
+        rects(1,x) = centerX-c.radius;
+        rects(2,x) = c.height-c.radius;
+        rects(3,x) = centerX+c.radius;
+        rects(4,x)= c.height+c.radius;
+    end
+
+    % draw circles
+    Screen('FillOval', Window, c.colors, rects);
+
+    % draw slider
+    c.slideposX = (c.slidepos-1)*c.circleSep + c.linestart;
+    Screen('FillOval', Window, [0 0 0], [c.slideposX-c.slideRadius, c.height-c.slideRadius, c.slideposX+c.slideRadius, c.height+c.slideRadius]);
+
+    % draw legend
+    scalekey=scaleArr;  % extra spaces so they spread out evenly
+    for y=1:3
+        DrawFormattedText(Window, scalekey{y}, (c.linestart+(c.linelength)*(y-1)/2)-150, c.scaleHeight,c.textColor);
+    end
+    %draw instruction
+    Screen('TextSize',Window,28);
+    DrawFormattedText(Window, 'Move the indicator with the arrow keys, then press ''space'' to confirm', 'center', c.instrHeight,c.textColor);
+
+    Screen('Flip',Window);
+end

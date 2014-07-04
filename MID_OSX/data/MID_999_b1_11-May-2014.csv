@@ -1,0 +1,17 @@
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_b1,11-May-2014 00:30:23,1,7,1,-$0,0.086009,18.0251,20.0284,22.883,24.0683,2.0033,0.48413,0.500,6,NaN,0,NaN,-$0,$0.00,0,noResponse
+999_b1,11-May-2014 00:30:23,2,7,2,-$1,26.5966,32.0314,34.018,36.9562,38.0246,1.9866,0.46744,0.500,6,NaN,0,NaN,-$1,$-1.00,0,noResponse
+999_b1,11-May-2014 00:30:23,3,7,2,-$1,40.0372,46.0211,48.0243,50.3615,52.0309,2.0033,0.48413,0.500,6,NaN,0,NaN,-$1,$-2.00,0,noResponse
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_b1,11-May-2014 00:43:16,1,7,1,-$0,-5.9544,12.0314,14.0181,16.9562,18.0246,1.9866,0.48412,0.500,6,NaN,0,NaN,-$0,$0.00,0,noResponse
+999_b1,11-May-2014 00:43:16,2,7,2,-$1,20.0574,26.0211,28.0244,30.7455,32.031,2.0033,0.48414,0.500,6,NaN,0,NaN,-$1,$-1.00,0,noResponse
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_b1,11-May-2014 00:45:14,1,7,1,-$0,-5.9777,12.0317,14.0183,16.3388,18.0249,1.9866,0.50081,0.500,6,NaN,0,NaN,-$0,$0.00,0,noResponse
+999_b1,11-May-2014 00:45:14,2,7,2,-$1,20.0398,26.0213,28.0246,30.4787,32.0312,2.0033,0.48412,0.500,6,NaN,0,NaN,-$1,$-1.00,0,noResponse
+999_b1,11-May-2014 00:45:14,3,7,2,-$1,34.0264,40.0277,42.031,44.6853,46.0208,2.0033,0.48413,0.500,6,NaN,0,NaN,-$1,$-2.00,0,noResponse
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_b1,11-May-2014 00:52:06,1,7,1,-$0,-5.9556,0.030487,2.0171,4.9886,6.0904,1.9866,0.38396,0.400,6,NaN,0,NaN,-$0,$0.00,0,noResponse
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_b1,11-May-2014 01:02:03,1,7,1,-$0,0.076421,12.0324,14.019,16.3896,18.0256,1.9866,0.38396,0.400,6,NaN,0,NaN,-$0,$0.00,0,noResponse
+999_b1,11-May-2014 01:02:03,2,7,2,-$1,20.0651,26.022,28.0253,30.9969,32.0319,2.0033,0.38396,0.400,6,NaN,0,NaN,-$1,$-1.00,0,noResponse
+999_b1,11-May-2014 01:02:03,3,7,2,-$1,34.0275,40.0284,42.0317,44.9865,46.0216,2.0033,0.38396,0.400,6,NaN,0,NaN,-$1,$-2.00,0,noResponse

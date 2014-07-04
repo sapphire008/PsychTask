@@ -1,0 +1,1 @@
+999stop_behav1_09-23-2013_12-15-35.mat	MRI Data	473.4	477.1	70.7	256.2	287.5	271.9	0.00	100.00	201.5	205.3	50.0	43.8	180	/Users/jong/Desktop/midbrain_pilots_scripts/StopSignal_OSX/results/999stop_behav1_09-23-2013_13-40-52.mat	MRI Data	430.1	430.1	74.3	256.2	268.8	262.5	2.08	98.96	167.6	167.6	56.2	43.8	180	

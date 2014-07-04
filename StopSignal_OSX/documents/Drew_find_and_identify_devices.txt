@@ -1,0 +1,341 @@
+
+
+
+
+%at UCD the ttl pulse comes through a modified by Scott keyboard, so will be a separate keyboard input
+%should run this script, then plug in only the device interested in (button-box, ttl, etc.) and re-run script, then compare the difference - obvioulsy should be a new device listed at the bottom
+%important to know what the device number is (i.e. 'n') -> for example of keyboard input, used later on in the Matlab script code -> the other fields (devices(n).transport,devices(n).usageName,devices(n).productID,devices(n).vendorID,devices(n).totalElements) I believe are just to identify the proper device, once identified I believe the only important value is the device number, 'n'
+
+
+
+
+%this script uses Psychtoolbox functions ('PsychHID') so make sure path correct
+
+
+%find the number of devices
+numDevices=PsychHID('NumDevices');
+
+%get the device info, returned as a structure with different fields
+devices=PsychHID('Devices');
+
+
+%loop through each device and print out the important and relevant data required in the script
+for n=1:numDevices,
+n %this is the device number which the Psychtoolbox scripts need
+devices(n)
+end;
+
+
+
+
+
+%for audio
+%do a loop to determine the corrent output device (so do same as keyboard test) - use result down below
+InitializePsychSound
+count=PsychPortAudio('GetOpenDeviceCount');
+devices=PsychPortAudio('GetDevices');
+devices(1)
+devices(2)
+devices(3)
+
+
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+example output from my own Mac:
+
+
+n
+
+n =
+
+     1
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Mouse
+
+devices(n).productID
+
+ans =
+
+   566
+
+devices(n).vendorID
+
+ans =
+
+        1452
+
+devices(n).totalElements
+
+ans =
+
+     6
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     2
+
+devices(n).transport
+
+ans =
+
+     ''
+
+
+devices(n).usageName
+
+ans =
+
+Consumer Usage 0x1
+
+devices(n).productID
+
+ans =
+
+     0
+
+devices(n).vendorID
+
+ans =
+
+     0
+
+devices(n).totalElements
+
+ans =
+
+     9
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     3
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Mouse
+
+devices(n).productID
+
+ans =
+
+       49164
+
+devices(n).vendorID
+
+ans =
+
+        1133
+
+devices(n).totalElements
+
+ans =
+
+     8
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     4
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Mouse
+
+devices(n).productID
+
+ans =
+
+   566
+
+devices(n).vendorID
+
+ans =
+
+        1452
+
+devices(n).totalElements
+
+ans =
+
+     7
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     5
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Page: 0xff00, Usage: 0x1
+
+devices(n).productID
+
+ans =
+
+   566
+
+devices(n).vendorID
+
+ans =
+
+        1452
+
+devices(n).totalElements
+
+ans =
+
+   514
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     6
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Consumer Usage 0x1
+
+devices(n).productID
+
+ans =
+
+       33346
+
+devices(n).vendorID
+
+ans =
+
+        1452
+
+devices(n).totalElements
+
+ans =
+
+    42
+
+ 
+ 
+ 
+ 
+ 
+n
+
+n =
+
+     7
+
+devices(n).transport
+
+ans =
+
+USB
+
+devices(n).usageName
+
+ans =
+
+Keyboard
+
+devices(n).productID
+
+ans =
+
+   566
+
+devices(n).vendorID
+
+ans =
+
+        1452
+
+devices(n).totalElements
+
+ans =
+
+   285
+
+
+
+
+
+
+
+
+
+

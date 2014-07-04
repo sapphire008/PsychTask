@@ -1,0 +1,7 @@
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+9999_061314_practice,13-Jun-2014 09:51:02,1,7,3,-$5,0.17688,2.0245,4.0262,6.8786,8.0295,2.0017,0.28357,0.300,6,NaN,0,NaN,-$5,$-5.00,0,noResponse
+9999_061314_practice,13-Jun-2014 09:51:02,2,5,6,+$5,11.2978,16.0195,18.0211,20.9569,22.0245,2.0017,0.28357,0.300,2,NaN,0,NaN,$0,$-5.00,0,noResponse
+9999_061314_practice,13-Jun-2014 09:51:02,3,5,5,+$1,24.0369,26.0278,28.0295,30.3647,32.0328,2.0017,0.28357,0.300,2,NaN,0,NaN,$0,$-5.00,0,noResponse
+9999_061314_practice,13-Jun-2014 09:51:02,4,5,1,-$0,34.0262,36.0194,38.0211,40.9569,42.0244,2.0017,0.28357,0.300,2,NaN,0,NaN,-$0,$-5.00,0,noResponse
+9999_061314_practice,13-Jun-2014 09:51:02,5,6,2,-$1,44.0347,46.0277,48.0294,50.7483,52.0161,2.0017,0.28357,0.300,4,NaN,0,NaN,-$1,$-6.00,0,noResponse
+9999_061314_practice,13-Jun-2014 09:51:02,6,6,4,+$0,54.0261,58.021,60.0227,62.3413,64.026,2.0017,0.28356,0.300,4,NaN,0,NaN,$0,$-6.00,0,noResponse

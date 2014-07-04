@@ -1,0 +1,5 @@
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+999_practice,02-May-2014 11:11:34,1,7,3,-$5,0.068667,2.0326,4.0192,6.8905,8.0257,1.9866,0.33388,0.500,6,0.31336,1,1,$0,$0.00,0.02381,hit
+999_practice,02-May-2014 11:11:34,2,5,6,+$5,10.1987,16.0222,18.0255,20.947,22.0321,2.0033,0.20033,0.500,2,0.19295,1,1,+$5,$5.00,0.047619,hit
+999_practice,02-May-2014 11:11:34,3,5,5,+$1,24.0301,26.022,28.0252,30.3624,32.0318,2.0033,0.18363,0.500,2,0.1775,1,1,+$1,$6.00,0.071429,hit
+999_practice,02-May-2014 11:11:34,4,5,1,-$0,34.0278,36.0217,38.025,40.9632,42.0316,2.0033,0.48413,0.500,2,NaN,0,NaN,-$0,$6.00,0.071429,noResponse

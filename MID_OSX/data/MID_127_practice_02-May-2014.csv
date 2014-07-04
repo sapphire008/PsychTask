@@ -1,0 +1,3 @@
+Subject,RunTime,Trial,TR,TrialType,CueValue,TrialOnset,CueOnset,DelayOnset,TargetOnset,FeedBackOnset,CueDuration,TargetDuration,CurrentTargetDuration,ITI,RT,ACC,KeyPressed,TrialGain,Total,TotalWinPercent,Timing
+127_practice,02-May-2014 11:18:24,1,7,3,-$5,0.076383,2.0223,4.0239,6.893,8.0273,2.0017,0.28357,0.600,6,0.26783,1,1,$0,$0.00,0.02381,hit
+127_practice,02-May-2014 11:18:24,2,5,6,+$5,10.198,16.0172,18.0189,20.9547,22.0222,2.0017,0.30025,0.600,2,0.28615,1,1,+$5,$5.00,0.047619,hit

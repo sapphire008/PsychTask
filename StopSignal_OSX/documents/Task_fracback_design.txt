@@ -1,0 +1,25 @@
+Original Design of the fracbacks:
+
+% Block structures
+arrBehaveBlockStructure = { ... %use this for behave
+    {0,'KJXGXRSXMNLXPXQ'}; {1,'SZZLGQQRDVVRRHH'}; {2,'LPLHGHNWNTNTKVQ'};... %block 1
+    {1,'SSGNJJZLLWWCFFP'}; {2,'RNKVWVPGPJTJMJM'}; {0,'HXPZJXDXPHDXLXM'};... %block 2
+    {1,'ZZLGQQRDVVRRHHM'}; {0,'DTXLFXZDXZXWXHJ'}; {2,'TKTKDJDHKZNZNKP'};... %block 3
+    };
+arrFmriBlockStructure = { ...   %use this for actual fMRI session
+    %block 1
+    {0,'VXNFTXBXNVBCXRX'}, {1,'SGGLQQBNNCCTTWK'}, {2,'JSJSBTBVSFPFPSN'}, {3,'REST'}, ... %mini-blocks 1-4
+    {1,'FFRWMMLHHBRRBBQ'}, {2,'RNRVWVPGPJTJMQM'}, {0,'SXBXHNCXDSXGTXZ'}, {3,'REST'}, ... %mini-blocks 5-8
+    {2,'QGQGZFZDGTKTKGL'}, {0,'DTXLFXZXDZWXHXJ'}, {1,'SSGNJJZLLWWCFFP'}, {3,'REST'}; ... %mini-blocks 9-12
+    %block 2
+    {2,'HLPDPDKSKQFQFSW'}, {1,'TTHCMMNZZRRWVSS'}, {0,'GXCXRLGWXVXSPXD'}, {3,'REST'}, ... %mini-blocks 1-4
+    {1,'KWWRMMDPPCCJJGS'}, {0,'HXPZJXDXPHDXMLX'}, {2,'TKTKDJDHKZNZNKP'}, {3,'REST'}, ... %mini-blocks 5-8
+    {0,'KXNVXPCXBKXWGXV'}, {2,'LPLHGHNWNTJTKVK'}, {1,'ZZLGQQRDVVRRHHM'}, {3,'REST'}; ... %mini-blocks 9-12
+    %block 3
+    {1,'WTRRCRDDFFQQPPS'}, {2,'TRTDJVJVLPGPDQD'}, {0,'XLDKWXWVXWXPKXH'}, {3,'REST'}, ... %mini-blocks 1-4
+    {2,'KNKNCZCBVTVPQPH'}, {0,'BDXTXBJXTXLXHZR'}, {1,'SSZZKCSJJVBBDDK'}, {3,'REST'}, ... %mini-blocks 5-8
+    {0,'DKJXVNXWXFTJXSX'}, {2,'KPLBLBDDRCRCFLF'}, {1,'TTCWWGBBSLLRNSS'}, {3,'REST'}; ... %mini-blocks 9-12
+    
+    
+The above is replaced by the current design, as the new design has no repeats and balance the trials of each block
+

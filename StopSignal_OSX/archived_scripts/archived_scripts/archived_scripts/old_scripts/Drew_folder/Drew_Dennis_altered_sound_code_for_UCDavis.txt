@@ -1,0 +1,59 @@
+%Drew: Dennis looked over the "Setting up the sound stuff code, made edits, and wrote this
+%--> he thought it was a strange frequency they choose, 22254 so he changed it to more standard 2250, not sure why they picked that; I changed it back to the original just to stay consistent with Poldrack's lab
+%--> they had it set to run with 1 channel, this would be okay here if use the Siemens headphone system (since 1 tube splits into 2 tubes) but if use Confon system or use earbud system then want 2 channels so in stereo --> 
+%--> need to identify the correct audio output, use PsychPortAudio()
+
+
+
+%%%% Setting up the sound stuff
+
+    %%%% Psychportaudio
+
+    load soundfile.mat 
+
+    %Dennis: some samples of generic sine wave
+    wave=sin(1:0.25:1000);
+    wave=[wave;wave];   %Dennis: to make for 2 channels not just 1 channel
+
+    %freq=2250; %Dennis
+  freq=22254;  
+
+    % find first dim of array
+    nrchannels = size(wave,1);    
+
+
+    % do a loop to determine the corrent output device (so do same as keyboard test) - use result down below
+    %InitializePsychSound
+    %count = PsychPortAudio('GetOpenDeviceCount');
+    %devices = PsychPortAudio('GetDevices');
+
+
+    % Default to auto-selected default output device:
+  %Dennis does not like this code, potential for problems since default device changes on different computers -> instead run the code above (i.e. "do a loop to determine ") and find the appropriate audio device and then change this number
+    %deviceid = -1;
+
+
+    % Request latency mode 2, which used to be the best one in our measurement:
+
+    reqlatencyclass = 2; % class 2 empirically the best, 3 & 4 == 2
+
+    % Initialize driver, request low-latency preinit:
+
+    InitializePsychSound(1);
+
+    % Open audio device for low-latency output:
+    %function with parameters: pahandle = PsychPortAudio('Open' [, deviceid][, mode][, reqlatencyclass][, freq][, channels][, buffersize][, suggestedLatency][, selectchannels][, specialFlags=0]);
+    pahandle = PsychPortAudio('Open', deviceid, [], reqlatencyclass, freq, nrchannels);
+
+
+    %Play the sound
+    PsychPortAudio('FillBuffer', pahandle, wave);
+
+
+   % Dennis: once buffer is full you only need to run this code below next to the stimulus
+   
+      PsychPortAudio('Start', pahandle, 1, 0, 0);
+
+    WaitSecs(1);
+
+    PsychPortAudio('Stop', pahandle);

@@ -1,0 +1,6 @@
+Started: 27-Feb-2014 13:54
+TrialNumber	NumChunksNum	Trial	ArrowDirection	LadderNumber	LadderNum_SSD	SubjectResponse	LadderMovement	RT	actualSSD	actualSSD_plusCMDtime	absoluteTime	TimeStartBlock	DrewsActualSSD	TrialDuration_trialcode	TrialCourse_trialcode	
+1	2	0	0	0	0	0	0	0.000	0.000	0.000	0.097	0.615	0.000	1.500	0.000
+2	2	2	2	0	0	0	0	0.000	0.000	0.000	0.000	0.000	0.000	1.125	1.500
+3	2	0	0	0	0	224	0	0.590	0.000	0.000	2.651	3.169	0.000	1.500	2.625
+4	2	2	2	0	0	0	0	0.000	0.000	0.000	0.000	0.000	0.000	0.625	4.125
